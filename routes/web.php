@@ -32,4 +32,13 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
+
+    Route::resource(name:'books', controller:\App\Http\Controllers\BookController::class)
+        ->names([
+            'index' => 'books'
+        ]);
+
+
+    Route::post('/upload-books', [\App\Http\Controllers\BookController::class, 'upload']);
+    Route::post('/upload-books-revert', [\App\Http\Controllers\BookController::class, 'uploadRevert']);    
 });
