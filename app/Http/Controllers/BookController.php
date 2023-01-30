@@ -2,20 +2,12 @@
 
 namespace App\Http\Controllers;
 
-// use App\Models\Book;
-// use Inertia\Inertia;
-// use App\Http\Requests\StoreBookRequest;
-// use App\Http\Requests\UpdateBookRequest;
-// use Illuminate\Support\Facades\Validator;
-// use Symfony\Component\HttpFoundation\Request;
-use App\Models\Book;
-use Inertia\Inertia;
 use App\Http\Requests\StoreBookRequest;
-//use Illuminate\Support\Facades\Request;
 use App\Http\Requests\UpdateBookRequest;
+use App\Models\Book;
 use Illuminate\Support\Facades\Validator;
+use Inertia\Inertia;
 use Symfony\Component\HttpFoundation\Request;
-
 
 class BookController extends Controller
 {
@@ -29,9 +21,10 @@ class BookController extends Controller
         $data = Book::query()->paginate(20);
 
         return Inertia::render('books', [
-            'data' => $data,
+            'data' => $data
         ]);
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -55,6 +48,7 @@ class BookController extends Controller
     }
 
 
+
     /**
      * Update the specified resource in storage.
      *
@@ -69,7 +63,6 @@ class BookController extends Controller
             'author' => 'required'
         ])->validate();
 
-        //$book->update($request->all());
         $book->update($request->only(['title', 'author']));
 
         $this->processImage($request, $book);

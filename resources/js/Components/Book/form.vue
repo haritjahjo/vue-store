@@ -41,7 +41,7 @@
                                     name="imageFilepond"
                                     ref="pond"
                                     v-bind:allow-multiple="false"
-                                    accepted-file-types="image/png, image/jpeg, image/jpg"
+                                    accepted-file-types="image/png, image/jpeg"
                                     v-bind:server="{
                                         url: '',
                                         timeout: 7000,
@@ -102,7 +102,6 @@
 </template>
 
 <script>
-
     import axios from "axios";
     import vueFilePond from "vue-filepond";
     import "filepond/dist/filepond.min.css";
